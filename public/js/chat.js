@@ -15,6 +15,8 @@ document.querySelector('#sendLocation').addEventListener('click',()=>{
         socket.emit('sendLocation',{
             latitude : latitude,
             longitude: longitude
+        },() => {
+            console.log('location shared');
         });
     });
 });
@@ -34,7 +36,12 @@ socket.on('message',(message) => {
 document.querySelector('#sendMessage').addEventListener('submit',(e)=>{
     e.preventDefault();
     let message = document.querySelector('#message').value;
-    socket.emit('sendMessage',message);
     document.querySelector('#message').value = '';
+    socket.emit('sendMessage',message,(error)=>{
+        if(error){
+            alert(error);
+            return;
+        }
+    });
 });
 
