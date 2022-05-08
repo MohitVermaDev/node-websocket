@@ -9,16 +9,29 @@
 <body>
     <h3>Chat App</h3>
     <div>
-        <ul id="messageList"></ul>
+        <div id="messageList"></div>
         <form action="" method="post" id="sendMessage">
             <input type="text" id="message">
             <button type="submit">Send</button>
         </form>
         <button type="button" id="sendLocation">Send Location</button>
-
+    
     </div>
+    
+    <script id="message-template" type="text/html">
+        <div>
+            <p>{{message}}</p>
+        </div>
+    </script>
+    <script id="location-template" type="text/html">
+        <div>
+            <a href="{{url}}" target="_blank">View My Location</a>
+        </div>
+    </script>
 </body>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.3/qs.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="./js/chat.js"></script>
 </html>
